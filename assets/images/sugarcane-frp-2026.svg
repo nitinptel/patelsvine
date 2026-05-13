@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">Sugarcane FRP</title>
+  <desc id="desc">Rs 365 per quintal for the 2026-27 season</desc>
+  <defs>
+    <linearGradient id="g" x1="0" x2="1" y1="0" y2="1">
+      <stop stop-color="#173d2b" offset="0"/>
+      <stop stop-color="#627d2a" offset="0.52"/>
+      <stop stop-color="#b85c38" offset="1"/>
+    </linearGradient>
+    <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M48 0H0v48" fill="none" stroke="#ffffff" stroke-opacity=".12"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="675" fill="url(#g)"/>
+  <rect width="1200" height="675" fill="url(#grid)"/>
+  <path d="M760 0h440v170c-112 54-235 72-370 44z" fill="#e7b64b" opacity=".18"/>
+  <path d="M0 525h470v150H0z" fill="#ffffff" opacity=".08"/>
+  <path d="M85 138c98-48 200-60 306-36s203 19 292-16" fill="none" stroke="#fff" stroke-opacity=".20" stroke-width="18" stroke-linecap="round"/>
+  <path d="M800 495L980 165M860 505l180-330" stroke="#fff" stroke-width="28" stroke-linecap="round"/><path d="M845 410l-70-60M910 330l-75-52M970 250l-76-54" stroke="#e7b64b" stroke-width="12" stroke-linecap="round"/><rect x="780" y="155" width="300" height="70" rx="8" fill="#fff8"/><text x="930" y="202" text-anchor="middle" font-size="34" font-weight="900" fill="#173d2b">Rs 365/qtl</text>
+  <g transform="translate(80 140)">
+    <rect x="0" y="0" width="92" height="10" fill="#e7b64b"/>
+    <text x="0" y="92" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="58" font-weight="900" fill="#fff">Sugarcane FRP</text>
+    <foreignObject x="0" y="128" width="560" height="160">
+      <div xmlns="http://www.w3.org/1999/xhtml" style="font-family: Inter, Segoe UI, Arial, sans-serif; color: rgba(255,255,255,.88); font-size: 26px; line-height: 1.35; font-weight: 650;">Rs 365 per quintal for the 2026-27 season</div>
+    </foreignObject>
+  </g>
+</svg>

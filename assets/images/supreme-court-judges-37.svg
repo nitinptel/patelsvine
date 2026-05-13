@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">Supreme Court Capacity</title>
+  <desc id="desc">The governance case for more judge strength</desc>
+  <defs>
+    <linearGradient id="g" x1="0" x2="1" y1="0" y2="1">
+      <stop stop-color="#1c2833" offset="0"/>
+      <stop stop-color="#255c7a" offset="0.52"/>
+      <stop stop-color="#9b4435" offset="1"/>
+    </linearGradient>
+    <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M48 0H0v48" fill="none" stroke="#ffffff" stroke-opacity=".12"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="675" fill="url(#g)"/>
+  <rect width="1200" height="675" fill="url(#grid)"/>
+  <path d="M760 0h440v170c-112 54-235 72-370 44z" fill="#e0ad42" opacity=".18"/>
+  <path d="M0 525h470v150H0z" fill="#ffffff" opacity=".08"/>
+  <path d="M85 138c98-48 200-60 306-36s203 19 292-16" fill="none" stroke="#fff" stroke-opacity=".20" stroke-width="18" stroke-linecap="round"/>
+  <path d="M760 450h330v42H760zM790 230h270l-135-80z" fill="#fff8"/><g fill="#fff"><rect x="805" y="255" width="34" height="170"/><rect x="872" y="255" width="34" height="170"/><rect x="939" y="255" width="34" height="170"/><rect x="1006" y="255" width="34" height="170"/></g><circle cx="1060" cy="210" r="42" fill="#e0ad42"/><text x="1060" y="223" text-anchor="middle" font-size="38" font-weight="900" fill="#1c2833">+4</text>
+  <g transform="translate(80 140)">
+    <rect x="0" y="0" width="92" height="10" fill="#e0ad42"/>
+    <text x="0" y="92" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="58" font-weight="900" fill="#fff">Supreme Court Capacity</text>
+    <foreignObject x="0" y="128" width="560" height="160">
+      <div xmlns="http://www.w3.org/1999/xhtml" style="font-family: Inter, Segoe UI, Arial, sans-serif; color: rgba(255,255,255,.88); font-size: 26px; line-height: 1.35; font-weight: 650;">The governance case for more judge strength</div>
+    </foreignObject>
+  </g>
+</svg>

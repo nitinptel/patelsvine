@@ -1,0 +1,16 @@
+{
+  "name": "PatelsVine",
+  "short_name": "PatelsVine",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f8f5ee",
+  "theme_color": "#15372c",
+  "description": "India-focused explainers on news, technology, politics, economy and events.",
+  "icons": [
+    {
+      "src": "/assets/images/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
