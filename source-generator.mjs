@@ -8,7 +8,9 @@ const author = {
   name: "PatelsVine Editorial Desk",
   url: `${siteUrl}/about/`,
 };
-const today = "2026-05-13";
+const today = "2026-05-26";
+const adsenseScript = `<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7743257472612824"
+     crossorigin="anonymous"></script>`;
 
 const categories = [
   { slug: "technology", name: "Technology", description: "AI, chips, digital public infrastructure, data, and consumer technology in India." },
@@ -40,9 +42,296 @@ const sources = {
   sugarcane: { label: "PIB: Sugarcane FRP for 2026-27", url: "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2258113&lang=1&reg=1" },
   rugby: { label: "NDTV Sports: Rugby Premier League 2026 Hyderabad", url: "https://sports.ndtv.com/othersports/rugby-india-announces-2nd-edition-of-rugby-premier-league-in-hyderabad-11317499" },
   defence: { label: "PIB: North Tech Symposium and defence production", url: "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2257798&lang=1&reg=1" },
+  padmaAwards: { label: "President of India: Padma Awards 2026 ceremony", url: "https://www.presidentofindia.gov.in/press_releases/president-india-presents-padma-awards-2026-civil-investiture-ceremony-i" },
+  coldWaterFisheries: { label: "PIB: Cold water fisheries and Blue Economy", url: "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2264535&lang=1&reg=1" },
+  indiaUsTrust: { label: "PIB: India-US natural partnership and supply chains", url: "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2263649&lang=1&reg=3" },
+  coreIndustriesApril: { label: "PIB: Index of Eight Core Industries April 2026", url: "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2263287&lang=1&reg=3" },
+  balancedFertilisers: { label: "PIB: ICAR balanced fertiliser campaign for Kharif 2026", url: "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2263372&lang=1&reg=3" },
+  waterMetroPolicy: { label: "PIB: Draft National Water Metro Policy 2026", url: "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2262535&lang=1&reg=1" },
+  stateCyber: { label: "PIB: Cyber security frameworks for state data", url: "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2261823&lang=1&reg=1" },
+  rajasthanSemicon: { label: "PIB: Rajasthan's first semiconductor plant", url: "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2261509&lang=1&reg=1" },
+  plfsApril: { label: "PIB: PLFS monthly bulletin April 2026", url: "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2261386&lang=1&reg=1" },
+  pmayMaharashtra: { label: "PIB: PMAY-G houses and PMGSY-IV roads for Maharashtra", url: "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2261081&lang=1&reg=3" },
 };
 
+const imageCredits = {
+  "padma-awards-2026.jpg": { credit: "Lakyanaik", url: "https://commons.wikimedia.org/wiki/File:The_President,_Shri_Ram_Nath_Kovind_presenting_the_Padma_Shri_Award,_2022_to_Shri_Neeraj_Chopra_for_Athletics,_Rashtrapati_Bhavan,_in_in_New_Delhi_on_March_08,_2022.jpg", license: "CC0 1.0", licenseUrl: "https://creativecommons.org/publicdomain/zero/1.0/" },
+  "cold-water-fisheries-2026.jpg": { credit: "Suhayl091", url: "https://commons.wikimedia.org/wiki/File:Fish_farm_kokernag.jpg", license: "CC BY-SA 4.0", licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0/" },
+  "india-us-trusted-supply-chains.jpg": { credit: "U.S. Department of State", url: "https://commons.wikimedia.org/wiki/File:Secretary_Blinken_Delivers_Remarks_at_the_U.S.-India_Business_Council%E2%80%99s_India_Ideas_Summit_-_52970602424.jpg", license: "Public domain", licenseUrl: "https://commons.wikimedia.org/wiki/Commons:Licensing#Material_in_the_public_domain" },
+  "core-industries-april-2026.jpg": { credit: "Neelabh2007", url: "https://commons.wikimedia.org/wiki/File:Steel_Plant,_Bokaro_Steel_City.jpg", license: "Public domain", licenseUrl: "https://commons.wikimedia.org/wiki/Commons:Licensing#Material_in_the_public_domain" },
+  "kharif-fertiliser-balance-2026.jpg": { credit: "kiran kumar", url: "https://commons.wikimedia.org/wiki/File:An_Indian_farmer_spreading_fertilizer_over_a_crop.jpg", license: "CC BY-SA 2.0", licenseUrl: "https://creativecommons.org/licenses/by-sa/2.0/" },
+  "national-water-metro-policy-2026.jpg": { credit: "Rohit Saw27", url: "https://commons.wikimedia.org/wiki/File:Kochi_water_metro_junction.jpg", license: "CC0 1.0", licenseUrl: "https://creativecommons.org/publicdomain/zero/1.0/" },
+  "state-data-cybersecurity-2026.jpg": { credit: "Abigor", url: "https://commons.wikimedia.org/wiki/File:Servers_in_a_Rack.jpg", license: "CC BY-SA 3.0", licenseUrl: "https://creativecommons.org/licenses/by-sa/3.0/" },
+  "rajasthan-semiconductor-plant-bhiwadi.jpg": { credit: "2x910", url: "https://commons.wikimedia.org/wiki/File:Si_wafer.jpg", license: "CC BY-SA 4.0", licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0/" },
+  "plfs-april-2026-labour-market.jpg": { credit: "Michael Cannon", url: "https://commons.wikimedia.org/wiki/File:GurgaonWomenConstructionWorkers.jpg", license: "CC BY-SA 2.0", licenseUrl: "https://creativecommons.org/licenses/by-sa/2.0/" },
+  "pmay-g-maharashtra-rural-housing-2026.jpg": { credit: "Sagar555", url: "https://commons.wikimedia.org/wiki/File:Rural_india_house_in_Maharashtra.jpg", license: "CC BY-SA 4.0", licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0/" },
+  "assembly-verdict-2026.jpg": { credit: "Election Commission of India / Government of India", url: "https://commons.wikimedia.org/wiki/File:The_voters_registering_their_names_at_a_polling_booth_at_Dolamandap_Sahi,_Puri,_Orissa,_during_the_2nd_Phase_of_General_Election-2009_on_April_23,_2009.jpg", license: "GODL-India", licenseUrl: "https://data.gov.in/sites/default/files/Gazette_Notification_OGDL.pdf" },
+  "eci-qr-counting-centres.jpg": { credit: "Aaron Parecki", url: "https://commons.wikimedia.org/wiki/File:QR_Codez.jpg", license: "CC BY 2.0", licenseUrl: "https://creativecommons.org/licenses/by/2.0/" },
+  "supreme-court-judges-37.jpg": { credit: "Subhashish Panigrahi", url: "https://commons.wikimedia.org/wiki/File:Supreme_Court_of_India.jpg", license: "CC BY-SA 4.0", licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0/" },
+  "semiconductor-gujarat-2026.jpg": { credit: "Inductiveload", url: "https://commons.wikimedia.org/wiki/File:Silicon_wafer.jpg", license: "Public domain", licenseUrl: "https://commons.wikimedia.org/wiki/Commons:Licensing#Material_in_the_public_domain" },
+  "indiaai-compute-2026.jpg": { credit: "Carl Lender", url: "https://commons.wikimedia.org/wiki/File:Datacenter_Server_Racks_(22370909788).jpg", license: "CC BY 2.0", licenseUrl: "https://creativecommons.org/licenses/by/2.0/" },
+  "upi-10-years-2026.jpg": { credit: "Ministry of Electronics and IT, Government of India", url: "https://commons.wikimedia.org/wiki/File:The_Minister_of_State_for_Tourism_(IC)_and_Electronics_%26_Information_Technology,_Shri_Alphons_Kannanthanam_launching_the_Digital_Payment_Security_Awareness_Campaign,_in_New_Delhi_(1).jpg", license: "GODL-India", licenseUrl: "https://data.gov.in/sites/default/files/Gazette_Notification_OGDL.pdf" },
+  "eclgs-airlines-west-asia.jpg": { credit: "Ashwin Kumar", url: "https://commons.wikimedia.org/wiki/File:Air_India_aircraft_at_Kempegowda_International_Airport_(13032288843).jpg", license: "CC BY-SA 2.0", licenseUrl: "https://creativecommons.org/licenses/by-sa/2.0/" },
+  "vadinar-ship-repair.jpg": { credit: "Georgy11", url: "https://commons.wikimedia.org/wiki/File:Cochin_shipyard.jpg", license: "Public domain", licenseUrl: "https://commons.wikimedia.org/wiki/Commons:Licensing#Material_in_the_public_domain" },
+  "railway-multitracking-901km.jpg": { credit: "Adityamadhav83", url: "https://commons.wikimedia.org/wiki/File:VSKP_based_Twin_WDG3A_Locomotives_with_a_freight_train_02.jpg", license: "CC BY-SA 3.0", licenseUrl: "https://creativecommons.org/licenses/by-sa/3.0/" },
+  "cotton-productivity-mission.jpg": { credit: "P Jeganathan", url: "https://commons.wikimedia.org/wiki/File:Cotton_field_in_sathanur,_perambalur_JEG2973_.jpg", license: "CC BY-SA 3.0", licenseUrl: "https://creativecommons.org/licenses/by-sa/3.0/" },
+  "sugarcane-frp-2026.jpg": { credit: "Thamizhpparithi Maari", url: "https://commons.wikimedia.org/wiki/File:Sugarcane_field_of_Kachirapalayam.jpg", license: "CC BY-SA 4.0", licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0/" },
+  "rugby-premier-league-hyderabad.jpg": { credit: "Asish Maitra", url: "https://commons.wikimedia.org/wiki/File:Wales_v_South_Africa_2010_Comm_Games.jpg", license: "CC0 1.0", licenseUrl: "https://creativecommons.org/publicdomain/zero/1.0/" },
+  "defence-tech-2026.jpg": { credit: "DRDO / Government of India", url: "https://commons.wikimedia.org/wiki/File:Hypersonic_LRASHM.jpg", license: "GODL-India", licenseUrl: "https://data.gov.in/sites/default/files/Gazette_Notification_OGDL.pdf" },
+};
+
+const realImageFiles = Object.keys(imageCredits);
+
 const posts = [
+  {
+    title: "Padma Awards 2026: Why the Civil Investiture Still Matters",
+    slug: "padma-awards-2026-civil-investiture-national-honours",
+    category: "events",
+    tags: ["Padma Awards", "Rashtrapati Bhavan", "public life", "culture"],
+    date: "2026-05-25",
+    updated: "2026-05-26",
+    excerpt: "The first Civil Investiture Ceremony for the Padma Awards 2026 put national recognition back at the centre of India's public conversation.",
+    dek: "A national honour is not only a medal moment. It is a public record of whose work India chooses to remember.",
+    readingMinutes: 5,
+    image: "padma-awards-2026.jpg",
+    imageAlt: "President of India presenting a Padma Shri award at Rashtrapati Bhavan",
+    sources: [sources.padmaAwards],
+    content: `
+      <p>The President of India, Smt Droupadi Murmu, presented the Padma Awards 2026 at the first Civil Investiture Ceremony held at Rashtrapati Bhavan on May 25, 2026. The President's Secretariat noted that the Vice President, Prime Minister, and Union Home Minister were among the dignitaries present. The ceremony was formal, but the larger meaning of the moment is public and democratic: the country pauses to recognise work that may otherwise stay outside daily headlines.</p>
+      <p>The Padma awards matter because they create a bridge between national memory and individual contribution. India is too large for every valuable life to become widely known. Artists, doctors, social workers, teachers, scientists, sportspersons, administrators, entrepreneurs, and community leaders often spend decades building institutions or preserving traditions before national attention reaches them. An investiture ceremony brings those stories into the centre of the republic.</p>
+      <p>There is also a cultural function. Public honours tell citizens what kinds of service are worth admiring. If the list includes grassroots work, traditional knowledge, scientific achievement, cultural preservation, and quiet institution-building, it expands the national idea of success. Recognition does not have to belong only to high visibility. It can also belong to sustained usefulness.</p>
+      <p>That is why the setting matters. Rashtrapati Bhavan is not simply a venue; it is a constitutional symbol. When recipients walk through that space, their work is placed inside the story of the Indian state. A small community initiative, a lifetime in the arts, or a scientific contribution becomes part of a national archive.</p>
+      <p>For readers, the important thing is to look beyond the ceremonial photograph. Each awardee's journey usually points to a field that needs deeper public attention. A folk artist's award may point to language preservation. A public health worker's award may point to frontline care. A scientist's award may point to patient research that never goes viral but changes capability over time.</p>
+      <p>The Padma Awards also invite a healthy question: how does India discover excellence? A country with thousands of districts, hundreds of languages, and deep social diversity needs nomination and evaluation systems that can find people beyond elite networks. The legitimacy of honours grows when citizens see that recognition can travel to small towns, difficult geographies, and under-documented fields.</p>
+      <p>There will always be debate around any award system. That is normal in a democracy. But the existence of debate does not reduce the value of public recognition. It should instead make the system more transparent, inclusive, and careful about the distinction between fame and contribution.</p>
+      <p>The May 25 ceremony is therefore more than an annual event. It is a reminder that nations are built not only through budgets, elections, and policies, but also through the stories they choose to preserve. The most useful way to follow the Padma Awards is to treat each name as an entry point into a larger India.</p>
+    `,
+  },
+  {
+    title: "Cold Water Fisheries: India's Mountain Blue Economy Is Getting Serious",
+    slug: "cold-water-fisheries-blue-economy-himalayan-livelihoods",
+    category: "agriculture",
+    tags: ["fisheries", "Blue Economy", "Himalayas", "rural livelihoods"],
+    date: "2026-05-23",
+    updated: "2026-05-26",
+    excerpt: "Cold water fisheries are moving from remote streams to organised aquaculture, livelihood support, conservation, and mountain enterprise.",
+    dek: "The new fisheries story is not only about catch. It is about hatcheries, raceways, cold chains, tourism, nutrition, and local entrepreneurship.",
+    readingMinutes: 6,
+    image: "cold-water-fisheries-2026.jpg",
+    imageAlt: "Trout raceways at a fish farm in Kokernag, Kashmir",
+    sources: [sources.coldWaterFisheries],
+    content: `
+      <p>India's cold water fisheries sector is being framed as a growing pillar of the Blue Economy. A PIB update from May 23, 2026 says the sector now supports livelihoods, nutrition, eco-tourism, biodiversity conservation, and sustainable mountain development. That is a meaningful shift. Cold water fisheries were once discussed mainly as traditional activity in Himalayan streams. They are now being connected to modern aquaculture infrastructure and rural enterprise.</p>
+      <p>The geography is specialised. Cold-water fisheries operate in high-altitude snow-fed rivers, streams, lakes, and reservoirs where temperatures usually sit between 5 and 25 degrees Celsius, dissolved oxygen is above 6 mg per litre, and pH levels stay between 6.5 and 8.0. Species such as rainbow trout, golden mahseer, and snow trout need this kind of ecological discipline. They cannot simply be scaled anywhere.</p>
+      <p>The source note says cold-water fisheries flourish across Jammu and Kashmir, Ladakh, Himachal Pradesh, Uttarakhand, Arunachal Pradesh, Sikkim, Meghalaya, Nagaland, and hill districts of West Bengal, Kerala, Karnataka, and Tamil Nadu. Together, these ecosystems cover more than 5.33 lakh square km of mountainous terrain. India has identified over 278 cold-water fish species, which makes the sector important for both production and conservation.</p>
+      <p>The production numbers are still modest compared with India's full fisheries economy, but they are no longer trivial. Total fish production reached about 197.75 lakh tonnes in 2024-25, while cold-water fisheries contributed nearly 3 percent of inland fish production. National cold-water fish production is around 7,000 metric tonnes, and trout production alone has risen nearly 1.8 times over the last decade to about 6,000 metric tonnes in 2024-25.</p>
+      <p>What makes this story interesting is the infrastructure layer. Hatcheries, raceways, recirculating aquaculture systems, biofloc systems, cold chain facilities, fish kiosks, transport vehicles, and integrated aqua parks are turning scattered activity into a value chain. The government note points to aqua parks at Anantnag, Udham Singh Nagar, Ziro, and Mokokchung, plus notified cold water fisheries clusters at Anantnag, Pithoragarh, Kullu, and Kargil.</p>
+      <p>For mountain communities, the economic logic is strong. Agriculture in high-altitude regions can be limited by climate, terrain, and market access. Fisheries can add a new income stream if seed supply, feed, disease management, cold transport, and local branding are reliable. Trout and other cold-water species can serve tourism markets, restaurants, urban consumers, and nutrition programmes.</p>
+      <p>The risk is that commercial growth could damage the very ecosystems that make the sector possible. Cold streams are sensitive. Poor waste handling, excessive stocking, disease spread, or careless infrastructure can hurt native biodiversity. That is why guidelines on hatchery standards, site selection, disease management, biosecurity, certification, and e-trading matter.</p>
+      <p>International collaboration with Norway and Iceland is also worth watching. Both countries have experience in cold-water aquaculture systems, hatchery management, and export strategy. India does not need to copy their models exactly, but knowledge transfer can help avoid mistakes in genetics, disease control, feed efficiency, and farm-level economics.</p>
+      <p>The next test is whether the sector can stay farmer-friendly. Capital-heavy systems can exclude small producers unless cooperatives, SHGs, startups, credit access, and insurance are designed carefully. If cold water fisheries become only a high-end niche, the rural development promise weakens. If cluster-based models bring small farmers into reliable markets, the sector can become a serious mountain livelihood engine.</p>
+    `,
+  },
+  {
+    title: "India-US Supply Chains: Why Trust Is Becoming an Economic Asset",
+    slug: "india-us-trusted-supply-chains-msme-export-mission",
+    category: "economy",
+    tags: ["India-US", "supply chains", "MSME", "exports", "manufacturing"],
+    date: "2026-05-21",
+    updated: "2026-05-26",
+    excerpt: "Commerce Minister Piyush Goyal's May 2026 remarks underline how India is pitching trust, talent, scale, and testing infrastructure to global industry.",
+    dek: "The next phase of trade policy is about whether Indian firms can meet quality, certification, and delivery expectations at global scale.",
+    readingMinutes: 6,
+    image: "india-us-trusted-supply-chains.jpg",
+    imageAlt: "India and United States flags at the U.S.-India Business Council India Ideas Summit",
+    sources: [sources.indiaUsTrust],
+    content: `
+      <p>At the American Chamber of Commerce Annual Leadership Summit in New Delhi, Commerce and Industry Minister Piyush Goyal described India and the United States as natural partners with complementarity across technology innovation, high-precision defence, digital data centres, quantum computing, and medical devices. The May 21, 2026 PIB release framed the relationship around a word that is becoming central to trade policy: trust.</p>
+      <p>Trust is now an economic asset because companies are rethinking supply chains after repeated shocks. Pandemic disruption, geopolitical conflict, tariff uncertainty, energy volatility, and logistics bottlenecks have made boardrooms ask not only where production is cheapest, but where it is dependable. India's pitch is that it can combine scale, skills, domestic demand, democratic institutions, and a growing manufacturing base.</p>
+      <p>The release says commitments from American industry in the previous six months were estimated above US$60 billion, including large data centre investments by companies such as Amazon and Google. Data centres are not just real estate with servers. They require power reliability, fibre connectivity, cooling, cybersecurity, land permissions, cloud demand, and local talent. Their growth signals confidence in digital consumption and enterprise infrastructure.</p>
+      <p>Goyal also pointed to 2,117 global capability centres in India, employing about 2.35 million people directly and generating nearly US$98 billion in revenue. That number matters because GCCs are no longer only back offices. Many now handle engineering, analytics, cybersecurity, product development, cloud operations, design, and research functions. They are part of India's shift from cost centre to capability centre.</p>
+      <p>The MSME angle may be even more important. The proposed Export Promotion Mission is expected to help smaller firms secure globally recognised certifications needed to enter international supply chains. This is practical policy. A small manufacturer can have a good product and still fail globally if testing, quality documentation, standards compliance, traceability, packaging, and inspection systems are weak.</p>
+      <p>The release mentions agencies such as the Export Inspection Council, Bureau of Indian Standards, and FSSAI working together to build testing and quality infrastructure. That is where the real export story sits. Big announcements attract attention, but quality systems decide whether repeat orders arrive. For global buyers, dependable certification reduces risk.</p>
+      <p>Industrial geography is another thread. The Minister referred to an area-based approach and a Bhavya scheme aimed at creating 100 new industrial parks. If such parks integrate worker housing, recreation, logistics, utilities, and social amenities, they can reduce friction for both workers and manufacturers. Industrial parks work best when they are ecosystems, not isolated plots.</p>
+      <p>India's challenge is execution discipline. Trust is hard to earn and easy to lose. Delayed shipments, inconsistent quality, contract uncertainty, slow dispute resolution, or infrastructure gaps can undermine the pitch. The opportunity is large, but it requires a boring kind of excellence: testing labs that work, ports that clear cargo, power that stays on, and firms that pay MSME suppliers on time.</p>
+      <p>The India-US supply-chain conversation is therefore not just about diplomacy. It is about whether Indian industry can convert strategic alignment into factory-level reliability. If that happens, trust will become a measurable export advantage.</p>
+    `,
+  },
+  {
+    title: "Eight Core Industries in April 2026: Steel, Cement and Electricity Hold the Line",
+    slug: "eight-core-industries-april-2026-steel-cement-electricity",
+    category: "economy",
+    tags: ["core industries", "IIP", "steel", "cement", "electricity"],
+    date: "2026-05-20",
+    updated: "2026-05-26",
+    excerpt: "April 2026 core industries data shows modest overall growth, with steel, cement, and electricity offsetting weakness in coal, crude oil, gas, refinery products, and fertilisers.",
+    dek: "The headline 1.7 percent growth hides a split economy inside India's industrial base.",
+    readingMinutes: 6,
+    image: "core-industries-april-2026.jpg",
+    imageAlt: "Bokaro Steel Plant industrial complex",
+    sources: [sources.coreIndustriesApril],
+    content: `
+      <p>The combined Index of Eight Core Industries increased by 1.7 percent provisionally in April 2026 compared with April 2025. The Ministry of Commerce and Industry release says cement, steel, and electricity recorded positive growth, while coal, crude oil, natural gas, refinery products, and fertilisers contracted. The number is modest, but the split inside it is more revealing than the headline.</p>
+      <p>The eight industries are coal, crude oil, natural gas, refinery products, fertilisers, steel, cement, and electricity. Together they carry 40.27 percent of the weight in the Index of Industrial Production. That makes this data a useful early signal for infrastructure demand, construction activity, energy production, and industrial momentum.</p>
+      <p>Cement grew 9.4 percent in April 2026 over April 2025. Steel grew 6.2 percent. Electricity generation grew 4.1 percent. These three positive readings point to continued activity in construction, infrastructure, real estate, manufacturing, and power demand. Cement and steel are especially important because they often move with project execution.</p>
+      <p>The weaker side was concentrated in energy and inputs. Coal production declined 8.7 percent, crude oil production fell 3.9 percent, natural gas dropped 4.3 percent, petroleum refinery products slipped 0.5 percent, and fertiliser production fell 8.6 percent. That mix suggests the overall industrial picture is uneven rather than broadly weak or broadly strong.</p>
+      <p>One month of data should not be overread. Core industry numbers are revised as source agencies update information, and April can carry seasonal and operational effects. Still, the combination matters because the core industries feed into broader industrial output. If weakness in coal, gas, and fertilisers continues, it can affect energy supply chains, farm input planning, and manufacturing costs.</p>
+      <p>The final growth rate for March 2026 was observed at 1.2 percent, while cumulative ICI growth during April to March 2025-26 was 2.7 percent over the previous year. That suggests the economy is growing, but not in a uniform boom pattern. Some capital goods and construction-linked areas look firmer than upstream energy production.</p>
+      <p>For policy watchers, the April data raises two questions. First, can infrastructure and housing demand keep steel and cement strong through the year? Second, will lower production in coal, crude oil, natural gas, and fertilisers prove temporary or become a pressure point for prices and supply?</p>
+      <p>For businesses, the practical message is to track the details, not just the index. A contractor sees cement and steel. A fertiliser dealer sees input supply. A power distributor sees demand and generation. A manufacturer sees energy and logistics costs. The core industries are called core because they sit underneath many other decisions.</p>
+      <p>April 2026 therefore looks like a mixed but useful signal. India's industrial base is still moving, but the growth is being carried by specific pillars. The next few monthly releases will show whether those pillars broaden into a stronger cycle.</p>
+    `,
+  },
+  {
+    title: "Kharif 2026 and Balanced Fertilisers: Soil Health Is Back in the Field",
+    slug: "kharif-2026-balanced-fertiliser-campaign-soil-health",
+    category: "agriculture",
+    tags: ["Kharif 2026", "fertilisers", "soil health", "ICAR", "farmers"],
+    date: "2026-05-20",
+    updated: "2026-05-26",
+    excerpt: "ICAR's nationwide campaign ahead of Kharif 2026 is pushing soil-test-based nutrient management, bio-fertilisers, vermicomposting, and integrated nutrient practices.",
+    dek: "The campaign is a reminder that farm productivity depends as much on input balance as on input volume.",
+    readingMinutes: 5,
+    image: "kharif-fertiliser-balance-2026.jpg",
+    imageAlt: "Indian farmer spreading fertiliser across a crop field",
+    sources: [sources.balancedFertilisers],
+    content: `
+      <p>The Indian Council of Agricultural Research has intensified a nationwide campaign on balanced use of fertilisers ahead of Kharif 2026. PIB's May 20 update describes field camps, farmer-scientist interactions, school awareness sessions, and training programmes across states. The message is simple but important: more fertiliser is not always better fertiliser.</p>
+      <p>Balanced fertiliser use means matching crop needs, soil condition, and nutrient timing. When farmers apply nutrients without soil testing, they can spend more money while damaging productivity over time. Excessive or poorly timed chemical fertiliser can affect soil biology, water quality, and input efficiency. Underuse of key nutrients can also weaken yields. Balance is the hard middle.</p>
+      <p>The campaign's emphasis on soil-test-based nutrient management is therefore practical. A soil test gives farmers a clearer view of what the field needs. It can help decide nitrogen, phosphorus, potassium, micronutrient, organic matter, and pH management. This is especially useful before Kharif, when monsoon timing, seed choice, and fertiliser planning intersect.</p>
+      <p>The release lists activities in Punjab, West Bengal, Odisha, Madhya Pradesh, Rajasthan, Telangana, Uttar Pradesh, and Uttarakhand. These are not all the same farming systems. Paddy nurseries in one region, soybean fields in another, mustard research in Rajasthan, and organic fertiliser demonstrations in hill areas need different advice. That local delivery is why Krishi Vigyan Kendras matter.</p>
+      <p>Integrated Nutrient Management is the key phrase. It brings chemical fertilisers, bio-fertilisers, vermicompost, farmyard manure, livestock-based nutrient recycling, green manuring, crop residue management, and precision practices into the same discussion. The goal is not to romanticise one method. The goal is to reduce waste, protect soil, and keep yields viable.</p>
+      <p>Cost is another reason farmers may listen. Fertiliser misuse can quietly raise the cost of cultivation. If a farmer applies expensive inputs that the crop cannot use efficiently, money is lost before harvest begins. Better nutrient management can improve margins even if the headline yield does not jump dramatically in the first season.</p>
+      <p>The campaign also has a food security dimension. India cannot depend only on expanding acreage. Productivity and resilience must improve on existing farmland. Healthy soil holds water better, supports root growth, and responds more predictably to weather stress. In a climate-volatile farming year, soil health becomes risk management.</p>
+      <p>The hard part is behaviour change. Farmers need advice that is timely, local, credible, and available in their language. They also need access to soil testing, reliable input quality, and follow-up support after demonstration camps end. A one-day awareness programme can start the conversation, but field-level trust is built across seasons.</p>
+      <p>Kharif 2026 will test whether balanced fertiliser messaging can move from poster to practice. If it does, the benefit will not only be lower chemical use. It will be better nutrient efficiency, lower avoidable cost, and soil that can keep producing without being exhausted.</p>
+    `,
+  },
+  {
+    title: "National Water Metro Policy 2026: Can Indian Cities Use Their Rivers Again?",
+    slug: "national-water-metro-policy-2026-urban-mobility",
+    category: "infrastructure",
+    tags: ["water metro", "urban mobility", "inland waterways", "public transport"],
+    date: "2026-05-18",
+    updated: "2026-05-26",
+    excerpt: "The draft National Water Metro Policy points to an 18-city rollout, with Phase I cities including Guwahati, Srinagar, Patna, Varanasi, Ayodhya, and Prayagraj.",
+    dek: "Water-based mobility sounds elegant, but it will work only if cities treat it as daily transport rather than a tourist novelty.",
+    readingMinutes: 6,
+    image: "national-water-metro-policy-2026.jpg",
+    imageAlt: "Kochi Water Metro junction and waterfront mobility infrastructure",
+    sources: [sources.waterMetroPolicy],
+    content: `
+      <p>The Ministry of Ports, Shipping and Waterways has circulated the Draft National Water Metro Policy, 2026 for inter-ministerial consultation. The May 18 PIB release says the Centre is planning water metro services in 18 cities, with Guwahati identified for Phase I. Srinagar, Patna, Varanasi, Ayodhya, and Prayagraj are also part of Phase I, while Tezpur and Dibrugarh have been proposed for Phase II.</p>
+      <p>The idea is attractive because many Indian cities grew around rivers, lakes, backwaters, and canals, yet their modern transport systems often ignore water. Roads became crowded. Land for new corridors became expensive. Metro rail is powerful but capital intensive. A water metro promises a lower-land, lower-civil-infrastructure alternative where navigable waterways already exist.</p>
+      <p>The release builds on the Kochi Water Metro experience and argues that water-based urban mobility can reduce congestion while offering cleaner, more comfortable commuting. The policy language also points to electric and hybrid ferries, lower land requirements, faster construction timelines, and reduced operational costs. Those are meaningful advantages if the service is planned carefully.</p>
+      <p>The biggest test is integration. A ferry stop is useful only if commuters can reach it easily and continue their journey after disembarking. Water metro stations need bus links, metro or rail interchange where possible, safe walkways, cycle parking, digital ticketing, last-mile options, and reliable schedules. Without that, water transport becomes a weekend ride rather than a weekday network.</p>
+      <p>City selection matters too. Guwahati, Srinagar, Patna, Varanasi, Ayodhya, and Prayagraj all have different river conditions, tourism patterns, flood risks, navigation constraints, and seasonal flows. A national policy can set standards, but each city will need a local operating model. What works on one water body may not work on another.</p>
+      <p>Safety and environmental safeguards will decide public trust. Ferries must meet standards for stability, emergency response, crowd control, accessibility, lighting, surveillance, and weather-related suspension. Water quality, bank protection, jetty construction, dredging, and habitat sensitivity should be managed transparently. A public transport project should not damage the water ecosystem it depends on.</p>
+      <p>There is also a tourism upside, but it should not dominate the service design. Cities like Varanasi, Srinagar, and Guwahati can attract visitors through scenic water routes. However, the strongest public case is daily mobility for residents. A system that serves schoolchildren, office workers, vendors, pilgrims, and local families will be more durable than one designed mainly for photo opportunities.</p>
+      <p>The policy consultation phase is important because state governments and urban bodies will carry much of the implementation burden. They need clarity on funding, fare policy, asset ownership, operator contracts, safety regulation, environmental approvals, and integration with existing transport agencies.</p>
+      <p>If done well, the National Water Metro Policy can reconnect Indian cities with their waterways in a modern way. If done casually, it risks producing isolated ferry projects with weak ridership. The difference will be whether policymakers treat water as a serious mobility corridor.</p>
+    `,
+  },
+  {
+    title: "State Data Cybersecurity: Why India's Digital Governance Needs a Common Baseline",
+    slug: "state-data-cybersecurity-framework-dpdp-nispg",
+    category: "security",
+    tags: ["cybersecurity", "state data", "DPDP Act", "digital governance"],
+    date: "2026-05-16",
+    updated: "2026-05-26",
+    excerpt: "MeitY's state data cybersecurity workshop is part of a four-stage process to build a national framework with inputs from all 36 states and Union Territories.",
+    dek: "As more welfare, identity, health, land, and education systems go digital, weak state data security becomes a public risk.",
+    readingMinutes: 6,
+    image: "state-data-cybersecurity-2026.jpg",
+    imageAlt: "Server racks representing secure public digital infrastructure",
+    sources: [sources.stateCyber],
+    content: `
+      <p>The Ministry of Electronics and Information Technology convened a National Consultative Workshop on strengthening cybersecurity frameworks for state data at The Ashok Hotel, New Delhi, on May 11, 2026. PIB's May 16 release says the workshop included senior officials from state and Union Territory governments, CERT-In, NIC, MeitY, and NeGD.</p>
+      <p>This may sound like an administrative meeting, but it addresses a serious public issue. State governments handle large volumes of sensitive data: welfare beneficiaries, land records, health schemes, school systems, pensions, labour records, local body databases, grievance portals, and identity-linked services. A breach or ransomware incident can disrupt services and expose citizens.</p>
+      <p>The workshop is stage II of a four-stage departmental process initiated after directions at the 5th National Conference of Chief Secretaries. It aims to produce a comprehensive national cybersecurity policy framework for state governments through structured consultations with all 36 states and Union Territories. That all-India coverage is essential because digital governance is only as strong as its weakest operational layer.</p>
+      <p>The release mentions regulatory obligations connected with the Digital Personal Data Protection Act, 2023 and NISPG. This is important because cybersecurity is no longer only an IT department matter. Data protection creates legal, administrative, and reputational responsibility. States need to know what data they hold, where it sits, who can access it, how it is backed up, and how incidents are reported.</p>
+      <p>Cybersecurity frameworks must also be realistic. A large state, a small Union Territory, a municipal body, and a rural department may have very different staffing and budgets. A common baseline should define minimum controls while allowing phased improvement. Password policy alone will not solve state data risk. Asset inventory, access management, encryption, logging, backups, vendor controls, vulnerability management, and incident drills all matter.</p>
+      <p>The next steps in the release are clear. States and Union Territories are expected to conduct internal state-level workshops by June 30, 2026. Structured inputs will then be submitted to MeitY. A final note with action points and priority reform areas will be discussed at a National Departmental Summit scheduled for August 2026, and the outcome will be submitted to the Cabinet Secretariat.</p>
+      <p>That timeline matters because cyber risk does not wait for perfect policy. State systems face phishing, misconfiguration, weak procurement, unsupported software, poor logging, and third-party risk every day. The consultation process should quickly move from diagnosis to implementation checklists and funding models.</p>
+      <p>Citizens often experience cybersecurity only after something breaks. A pension portal goes offline. A land record is unavailable. A hospital system is delayed. A database leak appears online. Better state data security is therefore not abstract. It protects continuity of public services and trust in digital government.</p>
+      <p>The best outcome would be a framework that is practical, measurable, and regularly audited. India's digital governance story has scaled fast. The security layer now has to scale with it.</p>
+    `,
+  },
+  {
+    title: "Rajasthan's First Semiconductor Plant: Why Bhiwadi Matters",
+    slug: "rajasthan-first-semiconductor-plant-bhiwadi-sahasra",
+    category: "technology",
+    tags: ["semiconductors", "Rajasthan", "Bhiwadi", "electronics manufacturing"],
+    date: "2026-05-15",
+    updated: "2026-05-26",
+    excerpt: "The Bhiwadi semiconductor ATMP/OSAT facility and electronics manufacturing cluster show how India's chip ambitions are spreading beyond one or two states.",
+    dek: "Packaging capacity, component clusters, training centres, and exports are the practical middle layer of India's semiconductor journey.",
+    readingMinutes: 6,
+    image: "rajasthan-semiconductor-plant-bhiwadi.jpg",
+    imageAlt: "Close view of a silicon wafer used in semiconductor manufacturing",
+    sources: [sources.rajasthanSemicon],
+    content: `
+      <p>Rajasthan entered India's semiconductor map on May 15, 2026 with the inauguration of an Electronics Manufacturing Cluster at Salarpur, Khushkhera, Bhiwadi, and the Sahasra Semiconductors ATMP/OSAT facility. The PIB release describes the Sahasra unit as India's first SME-led semiconductor facility and the first SME to start commercial production of semiconductor chips.</p>
+      <p>This matters because semiconductor ecosystems do not grow only through headline fabrication plants. Assembly, testing, marking, packaging, electronics components, cleanrooms, testing labs, skill centres, and supplier clusters are all part of the chain. ATMP and OSAT capacity can give India a practical entry point into global semiconductor workflows while larger fabrication ambitions mature.</p>
+      <p>The ELCINA Electronics Manufacturing Cluster at Bhiwadi has been developed over 50.3 acres with a project cost of Rs 46.09 crore, including Rs 20.24 crore of Government of India support under the EMC scheme. The release says it includes uninterrupted power and water supply, internal roads, centralised administrative facilities, testing and training centres, and a dedicated skill development centre.</p>
+      <p>The cluster has already attracted planned investments of more than Rs 1,200 crore by 20 companies, with 11 companies operational. Those operational companies have cumulative investment above Rs 900 crore and employment for more than 2,700 people. That cluster logic is important. Electronics manufacturing needs proximity between parts makers, packaging units, training facilities, logistics, and quality systems.</p>
+      <p>The Sahasra facility itself has been set up with investment above Rs 150 crore under MeitY's SPECS scheme. It spans 57,000 sq ft and includes Class 10K and 100K cleanrooms. The unit packages memory chips for products such as Micro SD and flash storage, along with LED driver ICs, eSIMs, and RFID products.</p>
+      <p>The annual packaging capacity is currently 60 million semiconductor units, with SPECS-supported projected capacity of about 43 million units and plans to scale to nearly 400-600 million units annually over the next two to three years. That scale-up will be the real test. Semiconductors reward consistency, yield, process control, and customer confidence.</p>
+      <p>The export detail is also notable. The facility is already exporting more than 60 percent of its production to markets including the United States, Germany, France, Eastern Europe, China, and Nepal. Exports show that the facility is not only being built for symbolic domestic consumption. It is being tested by external customers.</p>
+      <p>For Rajasthan, the location near the National Capital Region gives Bhiwadi road, rail, air, and industrial connectivity advantages. For India, the broader point is geographic diversification. A resilient electronics economy cannot depend on a handful of clusters. More states need to build credible niches.</p>
+      <p>The next stage should focus on supplier depth, training quality, reliability, and local product R&D. If Bhiwadi can move from packaging service to stronger design and component capability, Rajasthan's first semiconductor plant could become more than a milestone. It could become a platform.</p>
+    `,
+  },
+  {
+    title: "PLFS April 2026: What the Latest Labour Numbers Actually Say",
+    slug: "plfs-april-2026-labour-market-urban-female-unemployment",
+    category: "economy",
+    tags: ["PLFS", "jobs", "labour market", "urban unemployment", "women"],
+    date: "2026-05-15",
+    updated: "2026-05-26",
+    excerpt: "The April 2026 PLFS bulletin shows slight softening in labour force participation, stable urban worker-population ratio, and a one-year low in urban female unemployment.",
+    dek: "Monthly labour data should be read carefully: the direction matters, but so do definitions, rural-urban splits, and participation rates.",
+    readingMinutes: 6,
+    image: "plfs-april-2026-labour-market.jpg",
+    imageAlt: "Women construction workers at a work site in Gurgaon",
+    sources: [sources.plfsApril],
+    content: `
+      <p>The Periodic Labour Force Survey monthly bulletin for April 2026 gives a fresh snapshot of India's labour market. The National Statistical Office release says overall labour force participation for people aged 15 and above stood at 55.0 percent, compared with 55.4 percent in March 2026 and 55.6 percent in April 2025. That is a slight softening, not a dramatic shift.</p>
+      <p>PLFS uses the Current Weekly Status approach for these monthly indicators. That means it looks at activity status during a short reference period, making it useful for current trends but still requiring careful interpretation. A single month can move because of seasonality, rural work cycles, education schedules, migration, and temporary labour demand.</p>
+      <p>The worker-population ratio for people aged 15 and above was 52.2 percent in April 2026, down from 52.6 percent in March. Urban WPR, however, remained unchanged at 46.8 percent. This stability in urban WPR matters because urban jobs often receive more attention in public debate, especially for salaried work, services, construction, retail, transport, and platform-linked employment.</p>
+      <p>Unemployment moved slightly lower in cities. Urban unemployment for people aged 15 and above eased to 6.6 percent in April from 6.8 percent in March. Urban female unemployment declined to 8.5 percent, the lowest level recorded since April 2025 according to the release. That is encouraging, but it must be read with participation data.</p>
+      <p>Female labour force participation for people aged 15 and above stood at 33.9 percent in April 2026, compared with 34.4 percent in March and 34.2 percent in April 2025. Rural female LFPR was 38.2 percent, while urban female LFPR was 25.0 percent. A fall in unemployment can look positive, but if participation also softens, the story becomes more nuanced.</p>
+      <p>That is why labour numbers should be read as a set. LFPR tells us how many people are working or looking for work. WPR tells us how many are actually working. UR tells us how many in the labour force are unemployed. No single metric can describe job quality, wages, informality, hours, or security.</p>
+      <p>The release notes that the estimates are based on information from 3,74,243 persons surveyed, including 2,13,027 in rural areas and 1,61,216 in urban areas. A sample of that size gives the bulletin statistical weight, but readers still need to compare month after month before drawing strong conclusions.</p>
+      <p>The policy implications are familiar. India needs more work opportunities for women, better urban job matching, improved skilling, safer transport, childcare support, formalisation, and labour-intensive growth. Female participation especially depends on social norms, household responsibilities, local job availability, safety, and wage attractiveness.</p>
+      <p>April 2026 does not tell a simple jobs boom or jobs crisis story. It tells a mixed story: slightly lower participation, stable urban WPR, marginally lower urban unemployment, and an encouraging but incomplete signal for urban women. The best reading is cautious optimism with a demand for deeper job quality data.</p>
+    `,
+  },
+  {
+    title: "PMAY-G in Maharashtra: Five Lakh Houses and the Rural Infrastructure Link",
+    slug: "pmay-g-maharashtra-five-lakh-houses-rural-roads",
+    category: "infrastructure",
+    tags: ["PMAY-G", "Maharashtra", "rural housing", "PMGSY", "welfare"],
+    date: "2026-05-14",
+    updated: "2026-05-26",
+    excerpt: "Maharashtra's PMAY-G event combines Grih Pravesh for 5 lakh houses with a Rs 8,368.50 crore central-share sanction and 35 PMGSY-IV rural road works.",
+    dek: "Rural housing policy works best when it is linked with roads, services, local livelihoods, and beneficiary dignity.",
+    readingMinutes: 6,
+    image: "pmay-g-maharashtra-rural-housing-2026.jpg",
+    imageAlt: "Rural house construction in Maharashtra",
+    sources: [sources.pmayMaharashtra],
+    content: `
+      <p>The Ministry of Rural Development's May 14, 2026 release announced a major PMAY-G event in Satara, Maharashtra. Union Minister Shivraj Singh Chouhan was scheduled to launch Grih Pravesh for 5 lakh completed Pradhan Mantri Awaas Yojana-Gramin houses, issue a PMAY-G mother sanction involving Rs 8,368.50 crore central share assistance for Maharashtra in FY 2026-27, and approve 35 PMGSY-IV road works worth Rs 122.98 crore.</p>
+      <p>The numbers are large, but the significance is local. A completed rural house changes everyday security for a family. It affects privacy, health, study space, asset ownership, resilience during monsoon, and social dignity. The policy language of "pucca houses with basic amenities" becomes real only when families can actually move in.</p>
+      <p>The release says PMAY-G has a cumulative national target of 4.15 crore houses for states and Union Territories. As of May 11, 2026, 3.91 crore houses had been sanctioned and more than 3.03 crore completed. Maharashtra had a cumulative target of 43.80 lakh houses, with 41.42 lakh sanctioned and 17.92 lakh completed. Satara district had 55,052 targeted houses, 54,759 sanctioned, and 24,848 completed.</p>
+      <p>Those figures show both progress and unfinished work. Sanctioning is not the same as completion. Completion depends on land clarity, beneficiary contribution, fund flow, material prices, labour availability, local monitoring, convergence with toilets, electricity, water, and road access, and the ability of households to navigate paperwork.</p>
+      <p>The rural road component is important. Housing without connectivity can still leave families cut off from schools, health centres, markets, banks, and public transport. PMGSY-IV road works worth Rs 122.98 crore for 35 rural habitations connect the housing story to mobility. A village home becomes more valuable when the road outside it works across seasons.</p>
+      <p>Housing policy is also a platform for other welfare delivery. Once a household has a stable address and basic services, other programmes can reach more reliably. Banking, LPG, sanitation, electricity, digital records, and local governance all become easier when housing is formal and traceable.</p>
+      <p>There is a gender dimension too. Rural housing titles and beneficiary selection can affect women's bargaining power and family security when designed carefully. A house is not only a construction unit. It is a social asset, and the ownership pattern matters.</p>
+      <p>The risk in large housing programmes is that quantity can overshadow quality. Wall strength, roof durability, drainage, ventilation, climate resilience, toilet usability, and access to water should matter as much as counting completion. Beneficiary feedback should remain part of monitoring after the ceremony ends.</p>
+      <p>Maharashtra's May 2026 package is therefore best read as a rural infrastructure bundle: housing, roads, welfare recognition, and future funding. The outcome will be judged not only by how many houses are counted, but by how many families can live in them safely, affordably, and with better access to opportunity.</p>
+    `,
+  },
   {
     title: "India's 2026 Assembly Verdict: What Five State Results Signal",
     slug: "india-2026-assembly-verdict-five-state-results",
@@ -53,8 +342,8 @@ const posts = [
     excerpt: "The May 2026 assembly results across Assam, Kerala, Tamil Nadu, West Bengal, and Puducherry point to a more competitive and fragmented federal map.",
     dek: "A clear, neutral reading of the official Election Commission tallies and what they mean for India's political map.",
     readingMinutes: 6,
-    image: "assembly-verdict-2026.svg",
-    imageAlt: "Illustration of five ballot panels showing state election result bars",
+    image: "assembly-verdict-2026.jpg",
+    imageAlt: "Voters registering their names at an Indian polling booth",
     sources: [sources.eciIndex, sources.eciAssam, sources.eciKerala, sources.eciTamilNadu, sources.eciWestBengal, sources.eciPuducherry],
     content: `
       <p>The May 2026 assembly verdict is important because it is not one story. It is five regional stories arriving at the same time, each with a different message about party strength, local leadership, alliance arithmetic, and voter expectations. The Election Commission of India results dashboard, last updated on May 5, 2026, showed completed tallies for Assam, Kerala, Tamil Nadu, West Bengal, and Puducherry. Read together, the numbers describe a federal political map that is both decisive in some states and coalition-heavy in others.</p>
@@ -77,8 +366,8 @@ const posts = [
     excerpt: "The Election Commission's QR-based identity cards add a digital layer to the most sensitive point of the counting process.",
     dek: "The new ID module is a small technical change with large implications for trust, access control, and election transparency.",
     readingMinutes: 5,
-    image: "eci-qr-counting-centres.svg",
-    imageAlt: "Election counting desk with QR code identity cards and secure entry rings",
+    image: "eci-qr-counting-centres.jpg",
+    imageAlt: "A mobile phone scanning a QR code",
     sources: [sources.eciQr, sources.eciIndex],
     content: `
       <p>The Election Commission of India introduced a QR code-based Photo Identity Card module on ECINET for authorised entry into counting centres and counting halls. The system began with the counting held on May 4, 2026, for assembly elections in Assam, Kerala, Tamil Nadu, West Bengal, and Puducherry, along with by-elections in seven assembly constituencies across five states. It is planned for future Lok Sabha, state assembly, and by-election counting as well.</p>
@@ -101,8 +390,8 @@ const posts = [
     excerpt: "The Cabinet has approved a proposal to increase Supreme Court judge strength from 33 to 37, excluding the Chief Justice of India.",
     dek: "More judges can help throughput, but the deeper challenge is how cases move through the system.",
     readingMinutes: 5,
-    image: "supreme-court-judges-37.svg",
-    imageAlt: "Supreme Court columns with four added judge seats highlighted",
+    image: "supreme-court-judges-37.jpg",
+    imageAlt: "Central wing of the Supreme Court of India building in New Delhi",
     sources: [sources.supremeCourt],
     content: `
       <p>The Union Cabinet has approved a proposal to introduce the Supreme Court (Number of Judges) Amendment Bill, 2026. The proposal would amend the Supreme Court (Number of Judges) Act, 1956 and increase the number of Supreme Court judges from 33 to 37, excluding the Chief Justice of India. The stated objective is to help the Court function more efficiently and support speedy justice.</p>
@@ -125,8 +414,8 @@ const posts = [
     excerpt: "India's semiconductor push added two more projects, including a commercial Mini/Micro-LED display facility and a packaging unit.",
     dek: "The fresh approvals strengthen a domestic chip ecosystem that now has to move from announcement momentum to execution depth.",
     readingMinutes: 6,
-    image: "semiconductor-gujarat-2026.svg",
-    imageAlt: "Semiconductor wafer, display pixels, and Gujarat factory modules",
+    image: "semiconductor-gujarat-2026.jpg",
+    imageAlt: "Photograph of a silicon wafer used in semiconductor packaging",
     sources: [sources.semiconductor],
     content: `
       <p>The Union Cabinet approved two more semiconductor projects under the India Semiconductor Mission on May 5, 2026. The projects include India's first commercial Mini/Micro-LED display facility based on Gallium Nitride technology and a semiconductor packaging facility. Both are planned in Gujarat, with a cumulative investment of about Rs 3,936 crore and expected employment for 2,230 skilled professionals.</p>
@@ -149,8 +438,8 @@ const posts = [
     excerpt: "IndiaAI's 2026 progress shows a practical focus: cheaper compute, Indian-language models, startup support, and public-good AI infrastructure.",
     dek: "The important question is whether subsidised infrastructure can become real products, research, and public services.",
     readingMinutes: 6,
-    image: "indiaai-compute-2026.svg",
-    imageAlt: "AI compute grid with GPUs, datasets, and Indian language model nodes",
+    image: "indiaai-compute-2026.jpg",
+    imageAlt: "Rows of server racks inside a data centre",
     sources: [sources.indiaAi, sources.aiModels],
     content: `
       <p>India's artificial intelligence strategy in 2026 is becoming more concrete. Under the IndiaAI Mission, the government has highlighted affordable compute access, startup support, datasets, and indigenous foundational models. PIB updates in March 2026 said more than 38,000 GPUs had been onboarded through the AI compute portal for Indian startups and academia. Another government update noted that common compute is being provided through empanelled providers and that capacity is being expanded further.</p>
@@ -173,8 +462,8 @@ const posts = [
     excerpt: "UPI's first decade moved it from a payment feature to a national transaction layer used by consumers, merchants, banks, and startups.",
     dek: "The next decade will be about reliability, fraud control, cross-border use, and merchant economics.",
     readingMinutes: 6,
-    image: "upi-10-years-2026.svg",
-    imageAlt: "UPI payment network connecting merchants, banks, and consumers",
+    image: "upi-10-years-2026.jpg",
+    imageAlt: "Digital payment security awareness campaign launch in New Delhi",
     sources: [sources.upi],
     content: `
       <p>UPI completed 10 years in April 2026. According to a PIB release, annual UPI transaction volume rose from 2 crore transactions in FY 2016-17 to more than 24,162 crore transactions in FY 2025-26. Transaction value rose from Rs 0.07 lakh crore to about Rs 314 lakh crore over the same period. The release also noted more than 700 banks live on UPI and a large share of India's digital payments running through the system.</p>
@@ -197,8 +486,8 @@ const posts = [
     excerpt: "The Cabinet's ECLGS 5.0 approval links airline credit support to fuel prices, airspace closures, and route disruptions connected to West Asia tensions.",
     dek: "The aviation story shows how distant conflict can quickly become a domestic cost and liquidity problem.",
     readingMinutes: 5,
-    image: "eclgs-airlines-west-asia.svg",
-    imageAlt: "Airline route map with fuel cost and credit support indicators",
+    image: "eclgs-airlines-west-asia.jpg",
+    imageAlt: "Air India aircraft at Kempegowda International Airport",
     sources: [sources.eclgs],
     content: `
       <p>The Union Cabinet approved the Emergency Credit Line Guarantee Scheme 5.0 in May 2026, with targeted support for eligible borrowers including the airline sector. A PIB release from the Ministry of Civil Aviation said the scheme responds to financial stress caused by higher Aviation Turbine Fuel prices, airspace closures, reduced operations on international routes, lower aircraft utilisation, and liquidity constraints. Out of the additional credit flow, Rs 5,000 crore was earmarked for airlines.</p>
@@ -220,8 +509,8 @@ const posts = [
     excerpt: "The approved Vadinar facility aims to repair large vessels domestically and reduce dependence on foreign shipyards.",
     dek: "A 650-metre jetty, floating dry docks, and workshops could turn a gap in maritime capacity into an industrial opportunity.",
     readingMinutes: 5,
-    image: "vadinar-ship-repair.svg",
-    imageAlt: "Large vessel entering a dry dock at Vadinar with port cranes",
+    image: "vadinar-ship-repair.jpg",
+    imageAlt: "Shipyard view at Cochin with vessels and repair infrastructure",
     sources: [sources.vadinar],
     content: `
       <p>The Cabinet Committee on Economic Affairs approved a state-of-the-art Ship Repair Facility at Vadinar, Gujarat, in May 2026. The project will be jointly implemented by Deendayal Port Authority and Cochin Shipyard Limited, with a combined investment of Rs 1,570 crore. The plan includes a 650-metre jetty, two large floating dry docks, workshops, and supporting marine infrastructure.</p>
@@ -244,8 +533,8 @@ const posts = [
     excerpt: "Three approved railway multitracking projects will add capacity across 19 districts in six states and aim to improve freight and passenger reliability.",
     dek: "Extra lines are not glamorous, but they are exactly the kind of capacity that makes logistics more predictable.",
     readingMinutes: 5,
-    image: "railway-multitracking-901km.svg",
-    imageAlt: "Parallel railway tracks crossing six Indian states with freight and passenger icons",
+    image: "railway-multitracking-901km.jpg",
+    imageAlt: "Twin diesel locomotives pulling a freight train on Indian Railways",
     sources: [sources.rail],
     content: `
       <p>The Cabinet Committee on Economic Affairs approved three railway multitracking projects in May 2026 with an estimated cost of Rs 23,437 crore. The projects cover 19 districts across Madhya Pradesh, Rajasthan, Uttar Pradesh, Karnataka, Andhra Pradesh, and Telangana, and will increase the existing Indian Railways network by about 901 km. The projects are Nagda-Mathura third and fourth line, Guntakal-Wadi third and fourth line, and Burhwal-Sitapur third and fourth line.</p>
@@ -268,8 +557,8 @@ const posts = [
     excerpt: "The Rs 5,659.22 crore cotton mission aims to raise lint productivity, support farmers, improve quality, and strengthen textile competitiveness.",
     dek: "Cotton is not just a crop. It is the starting point of a farm-to-fashion export chain.",
     readingMinutes: 5,
-    image: "cotton-productivity-mission.svg",
-    imageAlt: "Cotton field linked to fibre, factory, fashion, and export icons",
+    image: "cotton-productivity-mission.jpg",
+    imageAlt: "Cotton field in Sathanur, Perambalur",
     sources: [sources.cotton],
     content: `
       <p>The Union Cabinet approved Rs 5,659.22 crore for the Mission for Cotton Productivity covering 2026-27 to 2030-31. The mission aims to address bottlenecks, declining growth, and quality concerns in India's cotton sector. It is aligned with the government's 5F vision: Farm to Fibre to Factory to Fashion to Foreign.</p>
@@ -292,8 +581,8 @@ const posts = [
     excerpt: "The approved Fair and Remunerative Price for sugarcane in the 2026-27 sugar season is Rs 365 per quintal at a basic recovery rate of 10.25 percent.",
     dek: "FRP is a farm-price decision, but it also shapes sugar mills, ethanol supply, arrears, and state-level politics.",
     readingMinutes: 5,
-    image: "sugarcane-frp-2026.svg",
-    imageAlt: "Sugarcane stalks with price, recovery rate, and mill icons",
+    image: "sugarcane-frp-2026.jpg",
+    imageAlt: "Sugarcane field in Kachirapalayam",
     sources: [sources.sugarcane],
     content: `
       <p>The Cabinet Committee on Economic Affairs approved the Fair and Remunerative Price of sugarcane for the 2026-27 sugar season at Rs 365 per quintal. The rate applies at a basic recovery rate of 10.25 percent. The government also approved a premium of Rs 3.56 per quintal for every 0.1 percent increase in recovery above 10.25 percent, with a corresponding reduction for lower recovery.</p>
@@ -315,8 +604,8 @@ const posts = [
     excerpt: "The second Rugby Premier League will be held at Gachibowli Stadium from June 16 to 28, 2026, giving Hyderabad another sports-economy moment.",
     dek: "The event is a test of whether non-cricket leagues can build audience, athlete pipelines, and host-city value.",
     readingMinutes: 5,
-    image: "rugby-premier-league-hyderabad.svg",
-    imageAlt: "Rugby ball under floodlights at Hyderabad Gachibowli Stadium",
+    image: "rugby-premier-league-hyderabad.jpg",
+    imageAlt: "Rugby sevens match action at the 2010 Commonwealth Games in Delhi",
     sources: [sources.rugby],
     content: `
       <p>Rugby India announced that the second edition of the Rugby Premier League will be held at Gachibowli Stadium in Hyderabad from June 16 to 28, 2026. The league will use the Rugby 7s format and feature six franchises from the first edition. The announcement positions Hyderabad as a host city for a fast, compact, spectator-friendly version of rugby.</p>
@@ -339,8 +628,8 @@ const posts = [
     excerpt: "The North Tech Symposium underscored India's push toward emerging defence technologies and a larger domestic production base.",
     dek: "Future readiness now depends on research depth, industrial transfer, and the speed at which new tools reach soldiers.",
     readingMinutes: 6,
-    image: "defence-tech-2026.svg",
-    imageAlt: "Defence technology grid with AI, quantum, space, underwater, and hypersonic systems",
+    image: "defence-tech-2026.jpg",
+    imageAlt: "DRDO long-range hypersonic missile flight trial launch",
     sources: [sources.defence],
     content: `
       <p>At the North Tech Symposium 2026 in Prayagraj, the Defence Minister emphasised research, surprise, and technological adaptation as central to future readiness. The government release highlighted emerging domains such as directed energy, hypersonic weapons, underwater and space technologies, quantum technology, artificial intelligence, and machine learning. It also cited defence production at a record high of Rs 1.54 lakh crore in FY 2025-26 and defence exports at Rs 38,424 crore.</p>
@@ -452,6 +741,7 @@ function layout({ title, description, canonical, body, currentFile, extraHead = 
   <meta name="twitter:image" content="${ogImage}">
   <link rel="preload" href="${relativeFile(file, "assets/css/styles.css")}" as="style">
   <link rel="stylesheet" href="${relativeFile(file, "assets/css/styles.css")}">
+  ${adsenseScript}
   ${extraHead}
 </head>
 <body class="${pageClass}">
@@ -561,6 +851,12 @@ function sourceList(sourceItems) {
       ${sourceItems.map((source) => `<li><a href="${source.url}" rel="nofollow noopener noreferrer" target="_blank">${escapeHtml(source.label)}</a></li>`).join("")}
     </ul>
   </section>`;
+}
+
+function imageCreditLine(image) {
+  const credit = imageCredits[image];
+  if (!credit) return "";
+  return `<figcaption>Image: <a href="${credit.url}" rel="nofollow noopener noreferrer" target="_blank">${escapeHtml(credit.credit)}</a>, <a href="${credit.licenseUrl}" rel="nofollow noopener noreferrer" target="_blank">${escapeHtml(credit.license)}</a>; cropped and resized.</figcaption>`;
 }
 
 function breadcrumbs(items, currentFile = "index.html") {
@@ -743,6 +1039,7 @@ function buildPost(post) {
         </div>
         <figure class="article-figure">
           <img src="${assetUrl(post.image, currentFile)}" alt="${escapeHtml(post.imageAlt)}" width="1200" height="675">
+          ${imageCreditLine(post.image)}
         </figure>
       </div>
     </header>
@@ -1020,10 +1317,10 @@ This folder is ready to upload to hosting for https://www.patelsvine.in.
 ## What is included
 
 - Responsive static HTML/CSS/JS site
-- 13 original India-focused articles with source links
+- ${posts.length} original India-focused articles with source links
 - Blog index, category pages, about, contact, editorial policy, privacy policy, terms, disclaimer
 - SEO metadata, Article schema, RSS feed, sitemap.xml, robots.txt, manifest, favicon
-- Original local SVG visual assets, so there are no copyrighted stock images to license
+- Local article thumbnail images sourced from reusable public-domain, CC, or GODL-India media with article-page credits
 
 ## Hosting
 
@@ -1035,7 +1332,7 @@ Open index.html directly for a quick preview, or run a local static server from 
 
 ## AdSense
 
-Apply to AdSense after the domain is hosted and crawlable. When Google gives you a publisher ID, update ads.txt and add the AdSense script/code exactly as Google provides it.
+AdSense script is included in generated pages using publisher ID ca-pub-7743257472612824. ads.txt also includes the matching publisher line.
 `;
 }
 
@@ -1632,6 +1929,18 @@ a:focus-visible {
   overflow: clip;
   border: 1px solid var(--border);
   box-shadow: var(--shadow);
+  background: var(--surface);
+}
+
+.article-figure figcaption {
+  padding: 8px 10px;
+  color: var(--muted);
+  font-size: 0.76rem;
+  line-height: 1.45;
+}
+
+.article-figure figcaption a {
+  font-weight: 700;
 }
 
 .reading-progress {
@@ -2066,22 +2375,6 @@ function svgTemplate({ title, subtitle, kind, colors = ["#15372c", "#1f7a8c", "#
 </svg>`;
 }
 
-const imageSpecs = [
-  ["assembly-verdict-2026.svg", "Assembly Verdict 2026", "Official state election tallies, read with context", "ballot", ["#15372c", "#1f7a8c", "#c9552a", "#d89922"]],
-  ["eci-qr-counting-centres.svg", "QR Counting Security", "Digital access control for India's counting centres", "qr", ["#15372c", "#24594a", "#1f7a8c", "#d89922"]],
-  ["supreme-court-judges-37.svg", "Supreme Court Capacity", "The governance case for more judge strength", "court", ["#1c2833", "#255c7a", "#9b4435", "#e0ad42"]],
-  ["semiconductor-gujarat-2026.svg", "Chip Manufacturing", "Two new semiconductor units approved in Gujarat", "chip", ["#14213d", "#1f7a8c", "#c9552a", "#f2b544"]],
-  ["indiaai-compute-2026.svg", "IndiaAI 2026", "Compute, sovereign models and startup support", "ai", ["#173b2f", "#315c9a", "#ad4f3b", "#e3b23c"]],
-  ["upi-10-years-2026.svg", "UPI at 10", "India's real-time payments network at public scale", "upi", ["#12372f", "#218380", "#c9552a", "#f3b33d"]],
-  ["eclgs-airlines-west-asia.svg", "Aviation Credit Buffer", "West Asia stress and Indian airline liquidity", "plane", ["#16213e", "#266b8f", "#b94b42", "#f1b84b"]],
-  ["vadinar-ship-repair.svg", "Vadinar Ship Repair", "Keeping maritime repair value in India", "ship", ["#12343b", "#2b6777", "#c4552d", "#e7b94b"]],
-  ["railway-multitracking-901km.svg", "901 Km Rail Capacity", "Three multitracking projects and India's logistics story", "rail", ["#14342b", "#57652a", "#bc4b2d", "#e4b13d"]],
-  ["cotton-productivity-mission.svg", "Cotton Mission", "Farm to fibre to factory to fashion to foreign", "cotton", ["#184337", "#47766d", "#b45a38", "#e0bd55"]],
-  ["sugarcane-frp-2026.svg", "Sugarcane FRP", "Rs 365 per quintal for the 2026-27 season", "cane", ["#173d2b", "#627d2a", "#b85c38", "#e7b64b"]],
-  ["rugby-premier-league-hyderabad.svg", "RPL Hyderabad", "Rugby Premier League returns in June 2026", "rugby", ["#15372c", "#275f73", "#bf4f31", "#e4b63f"]],
-  ["defence-tech-2026.svg", "Defence Tech 2026", "AI, hypersonics, quantum and preparedness", "defence", ["#141d2b", "#27475e", "#a84333", "#dba63d"]],
-];
-
 function logoSvg() {
   return `<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="PatelsVine logo">
   <rect width="512" height="512" rx="82" fill="#15372c"/>
@@ -2124,7 +2417,7 @@ async function main() {
   await write("robots.txt", buildRobots());
   await write("manifest.webmanifest", buildManifest());
   await write("README.md", buildReadme());
-  await write("ads.txt", "# Add your Google AdSense publisher line after AdSense provides it.\\n# Example: google.com, pub-0000000000000000, DIRECT, f08c47fec0942fa0\\n");
+  await write("ads.txt", "google.com, pub-7743257472612824, DIRECT, f08c47fec0942fa0\n");
   await write("humans.txt", `${siteName}\\nDomain: www.patelsvine.in\\nBuilt: ${today}\\n`);
   await write("assets\\css\\styles.css", css.trim() + "\n");
   await write("assets\\js\\main.js", js.trim() + "\n");
@@ -2136,8 +2429,9 @@ async function main() {
     kind: "ai",
     colors: ["#15372c", "#1f7a8c", "#c9552a", "#d89922"],
   }));
-  for (const [file, title, subtitle, kind, colors] of imageSpecs) {
-    await write(`assets\\images\\${file}`, svgTemplate({ title, subtitle, kind, colors }));
+  await mkdir(path.join(outputDir, "assets", "images"), { recursive: true });
+  for (const file of realImageFiles) {
+    await copyFile(path.join("assets", "images", file), path.join(outputDir, "assets", "images", file));
   }
   await write("data\\posts.json", JSON.stringify(posts.map((post) => ({
     title: post.title,
@@ -2150,6 +2444,7 @@ async function main() {
     excerpt: post.excerpt,
     readingMinutes: post.readingMinutes,
     image: assetUrl(post.image),
+    imageCredit: imageCredits[post.image],
   })), null, 2));
 
   await copyFile(new URL(import.meta.url), path.join(outputDir, "source-generator.mjs"));

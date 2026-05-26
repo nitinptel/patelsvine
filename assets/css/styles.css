@@ -590,6 +590,18 @@ a:focus-visible {
   overflow: clip;
   border: 1px solid var(--border);
   box-shadow: var(--shadow);
+  background: var(--surface);
+}
+
+.article-figure figcaption {
+  padding: 8px 10px;
+  color: var(--muted);
+  font-size: 0.76rem;
+  line-height: 1.45;
+}
+
+.article-figure figcaption a {
+  font-weight: 700;
 }
 
 .reading-progress {
